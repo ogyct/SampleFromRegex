@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Sample From Regex">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="../SampleFromRegex/dist/SampleFromRegex.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="start.Start"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ automaton.jar xeger-1.0-SNAPSHOT.jar miglayout15-swing.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="../SampleFromRegex/bin"/>
+            <zipfileset dir="../SampleFromRegex/lib" includes="automaton.jar"/>
+            <zipfileset dir="../SampleFromRegex/lib" includes="xeger-1.0-SNAPSHOT.jar"/>
+            <zipfileset dir="../SampleFromRegex" includes="miglayout15-swing.jar"/>
+        </jar>
+    </target>
+</project>
