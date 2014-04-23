@@ -1,20 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Sample From Regex">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
-    <target name="create_run_jar">
-        <jar destfile="../SampleFromRegex/dist/SampleFromRegex.jar">
-            <manifest>
-                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-                <attribute name="Rsrc-Main-Class" value="start.Start"/>
-                <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ automaton.jar xeger-1.0-SNAPSHOT.jar miglayout15-swing.jar"/>
-            </manifest>
-            <zipfileset src="jar-in-jar-loader.zip"/>
-            <fileset dir="../SampleFromRegex/bin"/>
-            <zipfileset dir="../SampleFromRegex/lib" includes="automaton.jar"/>
-            <zipfileset dir="../SampleFromRegex/lib" includes="xeger-1.0-SNAPSHOT.jar"/>
-            <zipfileset dir="../SampleFromRegex" includes="miglayout15-swing.jar"/>
-        </jar>
-    </target>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="SampleFromRegex">
+	<property environment="env" />
+	<property name="ECLIPSE_HOME" value="../../Programs/eclipse" />
+	<property name="junit.output.dir" value="junit" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	<path id="SampleFromRegex.classpath">
+		<pathelement location="bin" />
+		<pathelement location="lib/automaton.jar" />
+		<pathelement location="lib/xeger-1.0-SNAPSHOT.jar" />
+		<pathelement location="lib/miglayout15-swing.jar" />
+	</path>
+	<target name="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="SampleFromRegex.classpath" />
+		</javac>
+	</target>
+	
+	<target name="create_run_jar">
+		<jar destfile="../SampleFromRegex/dist/SampleFromRegex.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="start.Start" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ automaton.jar xeger-1.0-SNAPSHOT.jar miglayout15-swing.jar" />
+			</manifest>
+			<zipfileset src="lib/jar-in-jar-loader.zip" />
+			<fileset dir="../SampleFromRegex/bin" />
+			<zipfileset dir="../SampleFromRegex/lib" includes="automaton.jar" />
+			<zipfileset dir="../SampleFromRegex/lib" includes="xeger-1.0-SNAPSHOT.jar" />
+			<zipfileset dir="../SampleFromRegex/lib" includes="miglayout15-swing.jar" />
+		</jar>
+	</target>
 </project>

@@ -2,32 +2,20 @@ package gui;
 
 import generator.Generator;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 import net.miginfocom.swing.MigLayout;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JTextPane;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 /**
  * 
  * @author avgustisd
- *
+ * 
  */
 
 public class Window {
@@ -36,7 +24,7 @@ public class Window {
 	private JTextField textField;
 	private JTextPane textPane;
 	private JButton buttonClear;
-	
+
 	private Generator g = new Generator();
 
 	/**
@@ -80,7 +68,7 @@ public class Window {
 
 		textPane = new JTextPane();
 		window.getContentPane().add(textPane, "cell 0 2,grow");
-		
+
 		buttonClear = new JButton("Clear");
 		buttonClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,8 +77,8 @@ public class Window {
 		});
 		window.getContentPane().add(buttonClear, "cell 0 1");
 	}
-	
-	private void process(){
+
+	private void process() {
 		String result = g.generate(textField.getText());
 		textPane.setText(result);
 	}
