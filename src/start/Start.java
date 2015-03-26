@@ -1,11 +1,14 @@
 package start;
 
+import generator.Generator;
 import gui.Window;
 
 import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import controller.Controller;
 
 /**
  * Here the app starts
@@ -36,7 +39,8 @@ public class Start {
 			public void run() {
 				try {
 					Window window = new Window();
-					window.window.setVisible(true);
+					Generator gen = new Generator();
+					Controller contr = new Controller(gen, window);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

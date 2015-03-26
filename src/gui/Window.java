@@ -1,6 +1,5 @@
 package gui;
 
-import generator.Generator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,14 +23,14 @@ public class Window {
 	private JTextField textField;
 	private JTextPane textPane;
 	private JButton buttonClear;
-
-	private Generator g = new Generator();
+	private JButton buttonGenerate;
 
 	/**
 	 * Create the application.
 	 */
 	public Window() {
 		initialize();
+		window.setVisible(true);
 	}
 
 	/**
@@ -46,24 +45,12 @@ public class Window {
 				new MigLayout("", "[grow]", "[][][grow]"));
 
 		textField = new JTextField();
-		textField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				process();
-			}
-		});
 		textField.setToolTipText("Enter regex here");
 		window.getContentPane().add(textField, "cell 0 0,growx");
 		textField.setColumns(10);
 
-		JButton buttonGenerate = new JButton("Generate");
-		buttonGenerate.addActionListener(new ActionListener() {
-			/**
-			 * Generates sample after button click
-			 */
-			public void actionPerformed(ActionEvent e) {
-				process();
-			}
-		});
+		buttonGenerate = new JButton("Generate");
+
 		window.getContentPane().add(buttonGenerate, "flowx,cell 0 1");
 
 		textPane = new JTextPane();
@@ -78,9 +65,38 @@ public class Window {
 		window.getContentPane().add(buttonClear, "cell 0 1");
 	}
 
-	private void process() {
-		String result = g.generate(textField.getText());
-		textPane.setText(result);
-	}
+    public JTextField getTextField() {
+        return textField;
+    }
+
+    public void setTextField(JTextField textField) {
+        this.textField = textField;
+    }
+
+    public JButton getButtonClear() {
+        return buttonClear;
+    }
+
+    public void setButtonClear(JButton buttonClear) {
+        this.buttonClear = buttonClear;
+    }
+
+    public JTextPane getTextPane() {
+        return textPane;
+    }
+
+    public void setTextPane(JTextPane textPane) {
+        this.textPane = textPane;
+    }
+
+    public JButton getButtonGenerate() {
+        return buttonGenerate;
+    }
+
+    public void setButtonGenerate(JButton buttonGenerate) {
+        this.buttonGenerate = buttonGenerate;
+    }
+
+
 
 }
